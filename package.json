@@ -4,11 +4,13 @@
   "description": "A micro-package to convert style objects to css strings.  Inspired by extensive usage of styled-components.",
   "main": "index.js",
   "scripts": {
-    "test": "Node_Env=test jest",
+    "test": "Node_Env=test jest --detectOpenHandles",
     "start-dev": "nodemon --exec babel-node -- ./server/index.js",
     "test-dev": "Node_Env=test jest --watch",
     "prepush": "lint-staged",
-    "lint": "eslint --ext .jsx --ext .js ."
+    "lint": "eslint src --ext .jsx --ext .js .",
+    "validate": "npm-run-all --parallel lint test",
+    "fire": "git checkout -b emergency && git commit -Am 'emergency commit' && git push upstream emergency --no-verify"
   },
   "keywords": [
     "css",
@@ -16,28 +18,43 @@
   ],
   "author": "Tanner B. Hess Webber <tb@hesswebber.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tbhesswebber/style-object-to-css-string.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tbhesswebber/style-object-to-css-string/issues"
+  },
+  "homepage": "https://github.com/Tbhesswebber/style-object-to-css-string#readme",
+  "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
-    "babel-preset-airbnb": "^3.2.0",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-import-resolver-webpack": "^0.11.0",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
-    "husky": "^1.3.1",
-    "jest": "^24.1.0",
-    "jest-runner-eslint": "^0.7.3",
-    "lint-staged": "^8.1.4",
-    "prettier": "^1.16.4",
-    "regenerator-runtime": "^0.13.1"
+    "@babel/cli": "~7.2.3",
+    "@babel/core": "~7.3.3",
+    "@babel/preset-env": "~7.3.1",
+    "babel-core": "~7.0.0-bridge.0",
+    "babel-eslint": "~10.0.1",
+    "babel-jest": "~24.1.0",
+    "babel-preset-airbnb": "~3.2.0",
+    "eslint": "~5.3.0",
+    "eslint-config-airbnb": "~17.1.0",
+    "eslint-config-prettier": "~4.0.0",
+    "eslint-import-resolver-webpack": "~0.11.0",
+    "eslint-plugin-babel": "~5.3.0",
+    "eslint-plugin-import": "~2.16.0",
+    "eslint-plugin-jsx-a11y": "~6.2.1",
+    "eslint-plugin-react": "~7.12.4",
+    "husky": "~1.3.1",
+    "jest": "~24.1.0",
+    "jest-extended": "~0.11.1",
+    "npm-run-all": "~4.1.5",
+    "prettier": "~1.16.4",
+    "regenerator-runtime": "~0.13.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo precommit hook run!",
+      "pre-push": "npm run validate"
+    }
   },
   "babel": {
     "presets": [
@@ -51,14 +68,26 @@
   },
   "jest": {
     "notify": true,
-    "notifyMode": "always"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add",
-      "jest --bail --findRelatedTests"
-    ]
+    "notifyMode": "always",
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ],
+    "testRegex": "src/.*\\.test\\.js$",
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/coverage/",
+      "package.json",
+      "package-lock.json"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "eslintConfig": {
     "extends": [
