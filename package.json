@@ -10,7 +10,7 @@
     "prepush": "lint-staged",
     "lint": "eslint src --ext .jsx --ext .js .",
     "validate": "npm-run-all --parallel lint test",
-    "fire": "git checkout -b emergency && git commit -Am 'emergency commit' && git push upstream emergency --no-verify"
+    "fire": "git checkout -b emergency && git commit -Am 'emergency commit' && git push --set-upstream origin emergency --no-verify"
   },
   "keywords": [
     "css",
