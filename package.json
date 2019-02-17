@@ -15,6 +15,7 @@
     "test": "cross-env NODE_ENV=test jest ./src",
     "test:watch": "cross-env NODE_ENV=test jest ./src --watch",
     "test:lcov": "webpack-dev-server --env.presets dev-server",
+    "test:report": "cat ./coverage/lcov.info | codecov",
     "lint": "eslint src --ext .jsx --ext .js .",
     "validate": "npm-run-all --parallel lint test build",
     "fire": "git checkout -b emergency && git commit -Am 'emergency commit' && git push --set-upstream origin emergency --no-verify"
@@ -43,6 +44,7 @@
     "babel-jest": "~24.1.0",
     "babel-loader": "~8.0.5",
     "babel-preset-airbnb": "~3.2.0",
+    "codecov": "~3.2.0",
     "cross-env": "~5.2.0",
     "eslint": "~5.3.0",
     "eslint-config-airbnb": "~17.1.0",
