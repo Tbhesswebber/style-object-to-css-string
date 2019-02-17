@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "fire": "git checkout -b emergency && git commit -Am 'emergency commit' && git push --set-upstream origin emergency --no-verify",
+    "fire": "git checkout -b emergency && git add . && git commit -m 'emergency commit' --no-verify && git push --set-upstream origin emergency --no-verify",
     "cz": "git-cz",
     "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
@@ -18,7 +18,7 @@
     "test:watch": "cross-env NODE_ENV=test jest ./src --watch",
     "test:lcov": "webpack-dev-server --env.presets dev-server",
     "test:report": "cat ./coverage/lcov.info | codecov",
-    "lint": "eslint src --ext .jsx --ext .js .",
+    "lint": "eslint src --ext .js .",
     "validate": "npm-run-all --parallel lint test build",
     "release": "semantic-release"
   },
