@@ -1,4 +1,4 @@
 webpack.*.js
 
-/client/dist/*
+dist/*
 

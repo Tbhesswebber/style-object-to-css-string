@@ -1,2 +1,6 @@
 node_modules/
 coverage/
+dist/
+
+.ds_store
+desktop.ini
