@@ -4,7 +4,7 @@ module.exports = env => ({
   devtool: 'cheap-eval-source-map',
   output: {
     filename: 'index.umd.js',
-    library: 'styleObjToStr',
+    library: 'styleToCss',
     libraryTarget: 'umd',
   },
 });

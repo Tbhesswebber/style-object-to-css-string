@@ -2,5 +2,7 @@
 module.exports = env => ({
   output: {
     filename: 'index.min.js',
+    library: 'styleToCss',
+    libraryTarget: 'umd',
   },
 });
