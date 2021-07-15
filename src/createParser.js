@@ -3,7 +3,7 @@ function createParser(matcher, replacer) {
   return string => {
     // * throw an error if not a string
     if (typeof string !== 'string') {
-      throw new TypeError(`expected an argument of type string, but got ${typeof styleObj}`);
+      throw new TypeError(`expected an argument of type string, but got ${typeof string}`);
     }
 
     // * if no match between string and matcher
