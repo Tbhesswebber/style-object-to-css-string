@@ -2,22 +2,31 @@
   "name": "style-object-to-css-string",
   "version": "0.0.0-development",
   "description": "A micro-package to convert style objects to css strings.  Inspired by extensive usage of styled-components.",
-  "main": "dist/index.js",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.es.js"
+    },
+    "./parsers": {
+      "require": "./dist/parsers/index.cjs.js",
+      "import": "./dist/parsers/index.es.js"
+    },
+    "./createParser": {
+      "require": "./dist/createParser/index.cjs.js",
+      "import": "./dist/createParser/index.es.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "fire": "git checkout -b emergency && git add . && git commit -m 'emergency commit' --no-verify && git push --set-upstream origin emergency --no-verify",
     "cz": "git-cz",
-    "prebuild": "rimraf dist",
-    "build": "run-p build:*",
-    "build:node": "babel src --out-dir dist --ignore 'src/*.test.js'",
-    "build:browser": "webpack --env.mode development",
-    "build:browser.min": "webpack --env.mode production",
+    "build": "vite build",
     "test": "cross-env NODE_ENV=test jest ./src",
     "test:watch": "cross-env NODE_ENV=test jest ./src --watch",
-    "test:lcov": "webpack-dev-server --env.presets dev-server",
-    "test:report": "cat ./coverage/lcov.info | codecov",
     "lint": "eslint src --ext .js .",
     "validate": "run-p lint test build",
     "release": "semantic-release"
@@ -36,42 +45,23 @@
     "url": "https://github.com/Tbhesswebber/style-object-to-css-string/issues"
   },
   "homepage": "https://github.com/Tbhesswebber/style-object-to-css-string#readme",
-  "dependencies": {},
   "devDependencies": {
-    "@babel/cli": "~7.2.3",
-    "@babel/core": "~7.3.3",
-    "@babel/preset-env": "~7.3.1",
     "@commitlint/cli": "~7.5.2",
     "@commitlint/config-conventional": "~7.5.0",
-    "babel-core": "~7.0.0-bridge.0",
-    "babel-eslint": "~10.0.1",
-    "babel-jest": "~24.1.0",
-    "babel-loader": "~8.0.5",
-    "babel-preset-airbnb": "~3.2.0",
-    "codecov": "~3.2.0",
     "cross-env": "~5.2.0",
     "cz-conventional-changelog": "~2.1.0",
     "eslint": "~5.3.0",
     "eslint-config-airbnb": "~17.1.0",
     "eslint-config-prettier": "~4.0.0",
-    "eslint-import-resolver-webpack": "~0.11.0",
-    "eslint-plugin-babel": "~5.3.0",
     "eslint-plugin-import": "~2.16.0",
-    "eslint-plugin-jsx-a11y": "~6.2.1",
-    "eslint-plugin-react": "~7.12.4",
     "husky": "~1.3.1",
     "jest": "~24.1.0",
     "jest-extended": "~0.11.1",
     "npm-run-all": "~4.1.5",
-    "opn-cli": "~4.0.0",
     "prettier": "~1.16.4",
-    "regenerator-runtime": "~0.13.1",
     "rimraf": "~2.6.3",
     "semantic-release": "^15.13.3",
-    "webpack": "~4.29.4",
-    "webpack-cli": "~3.2.3",
-    "webpack-dev-server": "~3.1.14",
-    "webpack-merge": "~4.2.1"
+    "vite": "^4.5.0"
   },
   "husky": {
     "hooks": {
@@ -79,30 +69,6 @@
       "pre-commit": "npm run validate",
       "pre-push": "npm run validate"
     }
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "targets": {
-            "node": 6
-          }
-        }
-      ],
-      [
-        "airbnb",
-        {
-          "targets": {
-            "node": 6
-          }
-        }
-      ]
-    ],
-    "ignore": [
-      "node_modules",
-      "compiled"
-    ]
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -149,8 +115,7 @@
           "ignoreRestSiblings": false
         }
       ]
-    },
-    "parser": "babel-eslint"
+    }
   },
   "commitlint": {
     "extends": [
