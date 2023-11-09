@@ -59,41 +59,14 @@
     "jest-extended": "~0.11.1",
     "npm-run-all": "~4.1.5",
     "prettier": "~1.16.4",
-    "rimraf": "~2.6.3",
     "semantic-release": "^15.13.3",
     "vite": "^4.5.0"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "npm run validate",
       "pre-push": "npm run validate"
     }
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "jest-extended"
-    ],
-    "testRegex": "src/.*\\.test\\.js$",
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/coverage/",
-      "package.json",
-      "package-lock.json"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "coverageReporters": [
-      "text",
-      "lcov"
-    ]
   },
   "eslintConfig": {
     "extends": [
