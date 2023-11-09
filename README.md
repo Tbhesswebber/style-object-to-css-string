@@ -1,7 +1,5 @@
 # style-object-to-css-string
 
-![Travis](https://img.shields.io/travis/Tbhesswebber/style-object-to-css-string.svg?label=build&logo=travis&logoColor=yellow&style=popout-square)
-![codecov](https://img.shields.io/codecov/c/github/Tbhesswebber/style-object-to-css-string.svg?logo=codecov&style=popout-square)
 ![Commitizen friendly](<https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=popout-square&logo=travis&logoColor=rgba(0,0,0,0)>)
 
 This project was inspired by some work with the [:nail_care:styled components](https://www.styled-components.com/) library. In creating a component that I will never use, I needed to provide the consumer with a way to pass down styles that I can then merge into various component definitions along with my own css rules.
