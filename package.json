@@ -10,7 +10,7 @@
     "fire": "git checkout -b emergency && git add . && git commit -m 'emergency commit' --no-verify && git push --set-upstream origin emergency --no-verify",
     "cz": "git-cz",
     "prebuild": "rimraf dist",
-    "build": "npm-run-all --parallel build:*",
+    "build": "run-p build:*",
     "build:node": "babel src --out-dir dist --ignore 'src/*.test.js'",
     "build:browser": "webpack --env.mode development",
     "build:browser.min": "webpack --env.mode production",
@@ -19,7 +19,7 @@
     "test:lcov": "webpack-dev-server --env.presets dev-server",
     "test:report": "cat ./coverage/lcov.info | codecov",
     "lint": "eslint src --ext .js .",
-    "validate": "npm-run-all --parallel lint test build",
+    "validate": "run-p lint test build",
     "release": "semantic-release"
   },
   "keywords": [
