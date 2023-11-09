@@ -21,4 +21,9 @@ export default {
             external: [...builtinModules, /^node:/],
         },
     },
+    test: {
+        globals: true,
+        setupFiles: ['./testSetup.js'],
+        watch: false,
+    }
 };
