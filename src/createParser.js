@@ -1,3 +1,16 @@
+/**
+ * @callback Parser
+ * @param {string} target - The target text for the transformation
+ * @returns {string}
+ */
+
+/**
+ * 
+ * @param {string | RegExp} matcher - A regular expression or string to use to match against
+ * @param {string} replacer A string to use to replace the matcher
+ * @returns {Parser}
+ */
+
 function createParser(matcher, replacer) {
   const regex = RegExp(matcher, 'g');
   return string => {

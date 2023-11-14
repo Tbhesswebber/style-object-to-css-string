@@ -7,15 +7,18 @@
   "exports": {
     ".": {
       "require": "./dist/index.cjs.js",
-      "import": "./dist/index.es.js"
+      "import": "./dist/index.es.js",
+      "types": "./dist/main.d.ts"
     },
     "./parsers": {
       "require": "./dist/parsers/index.cjs.js",
-      "import": "./dist/parsers/index.es.js"
+      "import": "./dist/parsers/index.es.js",
+      "types": "./dist/parsers/index.d.ts"
     },
     "./createParser": {
       "require": "./dist/createParser/index.cjs.js",
-      "import": "./dist/createParser/index.es.js"
+      "import": "./dist/createParser/index.es.js",
+      "types": "./dist/createParser/index.d.ts"
     }
   },
   "files": [
@@ -23,7 +26,7 @@
   ],
   "scripts": {
     "fire": "git checkout -b emergency && git add . && git commit -m 'emergency commit' --no-verify && git push --set-upstream origin emergency --no-verify",
-    "cz": "git-cz",
+    "cz": "cz",
     "build": "vite build",
     "test": "cross-env NODE_ENV=test vitest",
     "test:watch": "npm test --watch",
@@ -48,6 +51,7 @@
   "devDependencies": {
     "@commitlint/cli": "~18.4.1",
     "@commitlint/config-conventional": "~7.5.0",
+    "commitizen": "^4.3.0",
     "cross-env": "~5.2.0",
     "cz-conventional-changelog": "~2.1.0",
     "eslint": "~5.3.0",
@@ -58,8 +62,11 @@
     "jest-extended": "~0.11.1",
     "npm-run-all": "~4.1.5",
     "prettier": "~1.16.4",
+    "rimraf": "^5.0.5",
     "semantic-release": "^22.0.7",
+    "typescript": "^5.2.2",
     "vite": "^4.5.0",
+    "vite-plugin-dts": "^3.6.3",
     "vitest": "^0.34.6"
   },
   "husky": {
@@ -95,7 +102,8 @@
             "^node:*"
           ]
         }
-      ]
+      ],
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.config.mjs"]}]
     }
   },
   "commitlint": {
@@ -110,7 +118,12 @@
   },
   "release": {
     "branches": [
-      "main"
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {"name": "beta", "prerelease": true},
+      {"name": "alpha", "prerelease": true}
     ]
   }
 }
