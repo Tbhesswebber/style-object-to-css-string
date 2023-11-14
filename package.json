@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "fire": "git checkout -b emergency && git add . && git commit -m 'emergency commit' --no-verify && git push --set-upstream origin emergency --no-verify",
-    "cz": "git-cz",
+    "cz": "cz",
     "build": "vite build",
     "test": "cross-env NODE_ENV=test vitest",
     "test:watch": "npm test --watch",
@@ -48,6 +48,7 @@
   "devDependencies": {
     "@commitlint/cli": "~18.4.1",
     "@commitlint/config-conventional": "~7.5.0",
+    "commitizen": "^4.3.0",
     "cross-env": "~5.2.0",
     "cz-conventional-changelog": "~2.1.0",
     "eslint": "~5.3.0",
