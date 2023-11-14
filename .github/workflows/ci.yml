@@ -19,18 +19,18 @@ jobs:
             - run: npm ci
             - run: npm run validate
             - run: npm run build
-    dry-run:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout
-            uses: actions/checkout@v4
-          - name: Setup node
-            uses: actions/setup-node@v3
-          - run: npm ci
-          - name: Build
-            run: npm run build
-          - name: Release
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-            run: unset GITHUB_ACTIONS && npm run release -- --dry-run --no-ci
+    # dry-run:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #       - name: Checkout
+    #         uses: actions/checkout@v4
+    #       - name: Setup node
+    #         uses: actions/setup-node@v3
+    #       - run: npm ci
+    #       - name: Build
+    #         run: npm run build
+    #       - name: Release
+    #         env:
+    #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    #         run: unset GITHUB_ACTIONS && npm run release -- --dry-run --no-ci
