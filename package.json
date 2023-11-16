@@ -2,22 +2,22 @@
   "name": "style-object-to-css-string",
   "version": "0.0.0-development",
   "description": "A micro-package to convert style objects to css strings.  Inspired by extensive usage of styled-components.",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs.js",
-      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
       "types": "./dist/main.d.ts"
     },
     "./parsers": {
-      "require": "./dist/parsers/index.cjs.js",
-      "import": "./dist/parsers/index.es.js",
+      "require": "./dist/parsers/index.cjs",
+      "import": "./dist/parsers/index.mjs",
       "types": "./dist/parsers/index.d.ts"
     },
     "./createParser": {
-      "require": "./dist/createParser/index.cjs.js",
-      "import": "./dist/createParser/index.es.js",
+      "require": "./dist/createParser/index.cjs",
+      "import": "./dist/createParser/index.mjs",
       "types": "./dist/createParser/index.d.ts"
     }
   },
