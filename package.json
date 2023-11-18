@@ -4,11 +4,12 @@
   "description": "A micro-package to convert style objects to css strings.  Inspired by extensive usage of styled-components.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs",
-      "types": "./dist/main.d.ts"
+      "types": "./dist/index.d.ts"
     },
     "./parsers": {
       "require": "./dist/parsers/index.cjs",
