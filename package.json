@@ -51,7 +51,7 @@
   "homepage": "https://github.com/Tbhesswebber/style-object-to-css-string#readme",
   "devDependencies": {
     "@commitlint/cli": "~18.4.1",
-    "@commitlint/config-conventional": "~7.5.0",
+    "@commitlint/config-conventional": "~19.0.3",
     "commitizen": "^4.3.0",
     "cross-env": "~5.2.0",
     "cz-conventional-changelog": "~3.3.0",
