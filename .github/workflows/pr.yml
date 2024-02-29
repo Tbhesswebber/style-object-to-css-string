@@ -1,0 +1,23 @@
+name: PR Validation
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+permissions:
+  contents: read # for checkout
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write 
+    steps:
+      - uses: aslafy-z/conventional-pr-title-action@v3
+        with:
+          preset: conventional-changelog-angular
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
