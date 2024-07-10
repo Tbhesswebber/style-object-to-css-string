@@ -11,13 +11,10 @@ permissions:
   contents: read # for checkout
 
 jobs:
-  lint:
+  main:
+    name: Validate PR title
     runs-on: ubuntu-latest
-    permissions:
-      statuses: write 
     steps:
-      - uses: aslafy-z/conventional-pr-title-action@v3
-        with:
-          preset: conventional-changelog-angular
+      - uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
